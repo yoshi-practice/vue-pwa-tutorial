@@ -26,7 +26,7 @@ $ npm run dev
 $ npm run build
 ```
 
-## Workboxの導入
+## [Workboxの導入](https://github.com/yoshi1125hisa/vue-pwa-tutorial/commit/190c80d0948012a219536a1fe21ee33a954f94f7#diff-b837e8e89bbf621827a64e0b2b0c0aa5)
 ```
 $ npm install workbox-webpack-plugin --save-dev
 ```

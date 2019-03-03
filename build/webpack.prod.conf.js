@@ -11,7 +11,8 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+// const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+const WorkboxPlugin = require('workbox-webpack-plugin')
 const loadMinified = require('./load-minified')
 
 const env = config.build.env
@@ -99,12 +100,21 @@ const webpackConfig = merge(baseWebpackConfig, {
       }
     ]),
     // service worker caching
-    new SWPrecacheWebpackPlugin({
-      cacheId: 'vue-pwa-tutorial',
-      filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css}'],
-      minify: true,
-      stripPrefix: 'dist/'
+    // new SWPrecacheWebpackPlugin({
+    //   cacheId: 'vue-pwa-tutorial',
+    //   filename: 'service-worker.js',
+    //   staticFileGlobs: ['dist/**/*.{js,html,css}'],
+    //   minify: true,
+    //   stripPrefix: 'dist/'
+    // })
+    new WorkboxPlugin.GenerateSW({
+      cacheId: 'easy-wallet',
+      globDirectory: config.build.assetsRoot,
+      globPatterns: ['**/*.{html,js,css,jpg,png}'],
+      swDest: path.join(config.build.assetsRoot, 'service-worker.js'),
+      skipWaiting: true,
+      clientsClaim: true,
+      runtimeCaching: []
     })
   ]
 })

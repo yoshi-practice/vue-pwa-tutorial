@@ -30,3 +30,36 @@ $ npm run build
 ```
 $ npm install workbox-webpack-plugin --save-dev
 ```
+
+./build/webpack.prod.conf.js:line14
+```
+const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
+```
+をコメントアウトし、
+```
+const WorkboxPlugin = require('workbox-webpack-plugin')
+```
+を追加。また、
+
+```
+new SWPrecacheWebpackPlugin({
+    cacheId: 'easy-wallet',
+    filename: 'service-worker.js',
+    staticFileGlobs: ['dist/**/*.{js,html,css}'],
+    minify: true,
+    stripPrefix: 'dist/'
+})
+```
+をコメントアウトし、
+```
+new WorkboxPlugin.GenerateSW({
+    cacheId: 'easy-wallet',
+    globDirectory: config.build.assetsRoot,
+    globPatterns: ['**/*.{html,js,css,jpg,png}'],
+    swDest: path.join(config.build.assetsRoot, 'service-worker.js'),
+    skipWaiting: true,
+    clientsClaim: true,
+    runtimeCaching: []
+})
+```
+を追加。

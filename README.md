@@ -21,6 +21,16 @@ $ npm install
 $ npm run dev
 ```
 
+## ビルド
+```
+$ npm run build
+```
+
+## Workboxの導入
+```
+$ npm install workbox-webpack-plugin --save-dev
+```
+
 ---
 
 ## Build Setup

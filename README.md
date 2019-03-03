@@ -12,7 +12,7 @@ $ vue init pwa vue-pwa-tutorial
 
 ? Vue build standalone 
 ? Install vue-router? Yes
-? Use ESLint to lint your code? どちらでも
+? Use ESLint to lint your code? Yes
 ? Setup unit tests with Karma + Mocha? No
 ? Setup e2e tests with Nightwatch? No
 
@@ -62,4 +62,18 @@ new WorkboxPlugin.GenerateSW({
     runtimeCaching: []
 })
 ```
-を追加。
+を追加してください。
+
+## [Webserver for Chrome](https://chrome.google.com/webstore/detail/web-server-for-chrome/ofhbbkphhbklhfoeikjpcbhemlocgigb) のインストール
+![](img/chrome-app_demo.png)
+
+
+## Serverを起動
+`CHOOSE FOLDER` を押し、 `/dist`フォルダを選択してください。
+
+![](img/chrome-dev_demo.png)
+
+`Web Server URL(s) http://XXX.X.X.X:XXXX` にアクセスすると、先ほど作成したページを開くことができるようになっています。
+
+## ServiceWorkerの動作確認
+![](img/service-worker_demo.png)
